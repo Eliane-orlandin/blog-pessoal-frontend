@@ -15,7 +15,7 @@ function DeletarPostagem() {
 
     const { id } = useParams<{ id: string }>()
 
-    const { usuario, handleLogout } = useContext(AuthContext)
+    const { usuario, handleLogout, isLoggingOut } = useContext(AuthContext)
     const token = usuario.token
 
     async function buscarPorId(id: string) {
@@ -33,11 +33,11 @@ function DeletarPostagem() {
     }
 
     useEffect(() => {
-        if (token === '') {
+        if (token === '' && !isLoggingOut) {
             ToastAlerta('Você precisa estar logado!', 'info')
             navigate('/')
         }
-    }, [token])
+    }, [token, isLoggingOut, navigate])
 
     useEffect(() => {
         if (id !== undefined) {

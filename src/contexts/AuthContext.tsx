@@ -1,4 +1,4 @@
-import { createContext, type ReactNode, useState } from "react"
+import { createContext, type ReactNode, useEffect, useState } from "react"
 
 import type UsuarioLogin from "../models/UsuarioLogin"
 import { login } from "../services/Service"
@@ -9,6 +9,7 @@ interface AuthContextProps {
     handleLogout(): void
     handleLogin(usuario: UsuarioLogin): Promise<void>
     isLoading: boolean
+    isLoggingOut: boolean
 }
 
 interface AuthProviderProps {
@@ -41,7 +42,10 @@ export function AuthProvider({ children }: AuthProviderProps) {
         setIsLoading(false)
     }
 
+    const [isLoggingOut, setIsLoggingOut] = useState(false)
+
     function handleLogout() {
+        setIsLoggingOut(true)
         setUsuario({
             id: 0,
             nome: "",
@@ -52,8 +56,15 @@ export function AuthProvider({ children }: AuthProviderProps) {
         })
     }
 
+    useEffect(() => {
+        if (usuario.token === '' && isLoggingOut) {
+            const timer = setTimeout(() => setIsLoggingOut(false), 0)
+            return () => clearTimeout(timer)
+        }
+    }, [usuario.token, isLoggingOut])
+
     return (
-        <AuthContext.Provider value={{ usuario, handleLogin, handleLogout, isLoading }}>
+        <AuthContext.Provider value={{ usuario, handleLogin, handleLogout, isLoading, isLoggingOut }}>
             {children}
         </AuthContext.Provider>
     )

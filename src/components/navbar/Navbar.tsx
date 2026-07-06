@@ -10,12 +10,9 @@ function Navbar() {
     const { usuario, handleLogout } = useContext(AuthContext)
 
     function logout() {
-
+        handleLogout()
         ToastAlerta('O Usuário foi desconectado com sucesso!', 'info')
         navigate('/')
-        setTimeout(() => {
-            handleLogout()
-        },0)
     }
 
     let component: ReactNode

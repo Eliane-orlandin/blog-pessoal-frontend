@@ -16,15 +16,15 @@ function ListaTemas() {
 
     const [temas, setTemas] = useState<Tema[]>([])
 
-    const { usuario, handleLogout } = useContext(AuthContext)
+    const { usuario, handleLogout, isLoggingOut } = useContext(AuthContext)
     const token = usuario.token
 
     useEffect(() => {
-        if (token === '') {
+        if (token === '' && !isLoggingOut) {
             ToastAlerta('Você precisa estar logado!', 'info')
             navigate('/')
         }
-    }, [token])
+    }, [token, isLoggingOut, navigate])
 
     useEffect(() => {
         buscarTemas()

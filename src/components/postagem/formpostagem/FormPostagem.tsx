@@ -19,7 +19,7 @@ function FormPostagem() {
     
     const [postagem, setPostagem] = useState<Postagem>({} as Postagem)
 
-    const { usuario, handleLogout } = useContext(AuthContext)
+    const { usuario, handleLogout, isLoggingOut } = useContext(AuthContext)
     const token = usuario.token
 
     const { id } = useParams<{ id: string }>()
@@ -61,11 +61,11 @@ function FormPostagem() {
     }
 
     useEffect(() => {
-        if (token === '') {
+        if (token === '' && !isLoggingOut) {
             ToastAlerta('Você precisa estar logado!', 'info')
             navigate('/');
         }
-    }, [token])
+    }, [token, isLoggingOut, navigate])
 
     useEffect(() => {
         buscarTemas()

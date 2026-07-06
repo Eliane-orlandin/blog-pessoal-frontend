@@ -14,7 +14,7 @@ function DeletarTema() {
 
     const [isLoading, setIsLoading] = useState<boolean>(false)
     
-    const { usuario, handleLogout } = useContext(AuthContext)
+    const { usuario, handleLogout, isLoggingOut } = useContext(AuthContext)
     const token = usuario.token
 
     const { id } = useParams<{ id: string }>()
@@ -34,11 +34,11 @@ function DeletarTema() {
     }
 
     useEffect(() => {
-        if (token === '') {
+        if (token === '' && !isLoggingOut) {
             ToastAlerta('Você precisa estar logado!', 'info')
             navigate('/')
         }
-    }, [token])
+    }, [token, isLoggingOut, navigate])
 
     useEffect(() => {
         if (id !== undefined) {
