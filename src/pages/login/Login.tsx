@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
 import { AuthContext } from "../../contexts/AuthContext";
 import type UsuarioLogin from "../../models/UsuarioLogin";
+import loginLogo from "../../assets/login.jpg";
 
 function Login() {
 
@@ -34,45 +35,45 @@ function Login() {
 
     return (
         <>
-            <div className="grid grid-cols-1 lg:grid-cols-2 h-screen place-items-center font-bold ">
-                <form className="flex justify-center items-center flex-col w-1/2 gap-4" 
+            <div className="grid grid-cols-1 lg:grid-cols-2 h-screen place-items-center font-bold bg-[#2c1a3a] text-white">
+                <form className="flex justify-center b-[#2c1a3a] items-center flex-col w-1/2 gap-4"
                     onSubmit={login}>
-                        
-                    <h2 className="text-slate-900 text-5xl ">Entrar</h2>
-                    <div className="flex flex-col w-full">
+
+                    <h2 className="text-[#926799] text-5xl ">Entrar</h2>
+                    <div className="text-[#926799] flex flex-col w-full">
                         <label htmlFor="usuario">Usuário</label>
                         <input
                             type="text"
                             id="usuario"
                             name="usuario"
                             placeholder="Usuario"
-                            className="border-2 border-slate-700 rounded p-2"
-                            value = {usuarioLogin.usuario}
+                            className="border-2 border-slate-700 rounded-lg p-2 bg-[#eae5ef] text-black"
+                            value={usuarioLogin.usuario}
                             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
 
                         />
                     </div>
-                    <div className="flex flex-col w-full">
+                    <div className="text-[#926799] flex flex-col w-full">
                         <label htmlFor="senha">Senha</label>
                         <input
                             type="password"
                             id="senha"
                             name="senha"
                             placeholder="Senha"
-                            className="border-2 border-slate-700 rounded p-2"
-                            value = {usuarioLogin.senha}
+                            className="border-2 border-slate-700 rounded-lg p-2 bg-[#eae5ef] text-black"
+                            value={usuarioLogin.senha}
                             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
                         />
                     </div>
                     <button
                         type='submit'
-                        className="rounded bg-indigo-400 flex justify-center
-                                   hover:bg-indigo-900 text-white w-1/2 py-2">
-                        { isLoading ? 
-                            <ClipLoader 
-                                color="#ffffff" 
+                        className="rounded-lg bg-[#926799] flex justify-center
+                                   hover:bg-[#7d4d84] text-white w-1/2 py-2">
+                        {isLoading ?
+                            <ClipLoader
+                                color="#926799"
                                 size={24}
-                            /> : 
+                            /> :
                             <span>Entrar</span>
                         }
                     </button>
@@ -81,12 +82,12 @@ function Login() {
 
                     <p>
                         Ainda não tem uma conta?{' '}
-                        <Link to="/cadastro" className="text-indigo-800 hover:underline">
+                        <Link to="/cadastro" className="text-[#926799] hover:underline">
                             Cadastre-se
                         </Link>
                     </p>
                 </form>
-                <div className="bg-[url('https://i.imgur.com/ZZFAmzo.jpg')] lg:block hidden bg-no-repeat 
+                <div style={{ backgroundImage: `url(${loginLogo})` }} className="lg:block hidden bg-no-repeat 
                             w-full min-h-screen bg-cover bg-center"
                 ></div>
             </div>

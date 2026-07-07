@@ -7,7 +7,7 @@ import { atualizar, buscar, cadastrar } from "../../../services/Service";
 import { ToastAlerta } from "../../../utils/ToastAlerta";
 
 function FormTema() {
-    
+
     const navigate = useNavigate();
 
     const [tema, setTema] = useState<Tema>({} as Tema)
@@ -92,39 +92,39 @@ function FormTema() {
         setIsLoading(false)
         retornar()
     }
-    
+
     return (
         <div className="container flex flex-col items-center justify-center mx-auto">
             <h1 className="text-4xl text-center my-8">
-                 {id === undefined ? 'Cadastrar Tema' : 'Editar Tema'}
+                {id === undefined ? 'Cadastrar Tema' : 'Editar Tema'}
             </h1>
 
-            <form className="w-1/2 flex flex-col gap-4" 
-                    onSubmit={gerarNovoTema} >
+            <form className="w-1/2 flex flex-col gap-4"
+                onSubmit={gerarNovoTema} >
                 <div className="flex flex-col gap-2">
                     <label htmlFor="descricao">Descrição do Tema</label>
                     <input
                         type="text"
                         placeholder="Descreva aqui seu tema"
                         name='descricao'
-                        className="border-2 border-slate-700 rounded p-2"
+                        className="border-2 border-slate-700 rounded-lg p-2 bg-[#eae5ef] text-black"
                         value={tema.descricao}
                         onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
                     />
                 </div>
                 <button
-                    className="rounded text-slate-100 bg-indigo-400 
-                               hover:bg-indigo-800 w-1/2 py-2 mx-auto flex justify-center"
+                    className="rounded-lg text-slate-100 bg-[#2c1a3a] 
+                               hover:bg-[#1e112a] w-1/2 py-2 mx-auto flex justify-center"
                     type="submit">
-                    
-                    { isLoading ? 
-                            <ClipLoader 
-                                color="#ffffff" 
-                                size={24}
-                            /> : 
-                           <span>{id === undefined ? 'Cadastrar' : 'Atualizar'}</span>
+
+                    {isLoading ?
+                        <ClipLoader
+                            color="#ffffff"
+                            size={24}
+                        /> :
+                        <span>{id === undefined ? 'Cadastrar' : 'Atualizar'}</span>
                     }
-                    
+
                 </button>
             </form>
         </div>

@@ -8,15 +8,16 @@ function ModalPostagem() {
         <>
             <Popup
                 trigger={
-                    <button 
-                        className='border rounded px-4 py-2 hover:bg-white hover:text-indigo-800'>
+                    <button
+                        className='border rounded-lg px-4 py-2 hover:bg-[#926799] hover:text-[#2c1a3a]'>
                         Nova Postagem
                     </button>
                 }
                 modal
                 contentStyle={{
                     borderRadius: '1rem',
-                    paddingBottom: '2rem'
+                    paddingBottom: '2rem',
+                    backgroundColor: '#D4C3D6'
                 }}
             >
                 <FormPostagem />

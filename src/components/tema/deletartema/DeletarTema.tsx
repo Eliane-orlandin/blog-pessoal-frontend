@@ -13,7 +13,7 @@ function DeletarTema() {
     const [tema, setTema] = useState<Tema>({} as Tema)
 
     const [isLoading, setIsLoading] = useState<boolean>(false)
-    
+
     const { usuario, handleLogout, isLoggingOut } = useContext(AuthContext)
     const token = usuario.token
 
@@ -61,7 +61,7 @@ function DeletarTema() {
         } catch (error: any) {
             if (error.toString().includes('401')) {
                 handleLogout()
-            }else {
+            } else {
                 ToastAlerta('Erro ao deletar o tema.', 'erro')
             }
         }
@@ -80,29 +80,29 @@ function DeletarTema() {
             <p className='text-center font-semibold mb-4'>
                 Você tem certeza de que deseja apagar o tema a seguir?</p>
             <div className='border flex flex-col rounded-2xl overflow-hidden justify-between'>
-                <header 
-                    className='py-2 px-6 bg-indigo-600 text-white font-bold text-2xl'>
+                <header
+                    className='py-2 px-6 bg-[#1e112a] text-white font-bold text-2xl'>
                     Tema
                 </header>
-                <p className='p-8 text-3xl bg-slate-200 h-full'>{tema.descricao}</p>
+                <p className='p-8 text-3xl bg-white text-slate-800 h-full'>{tema.descricao}</p>
                 <div className="flex">
-                    <button 
-                        className='text-slate-100 bg-red-400 hover:bg-red-600 w-full py-2'
+                    <button
+                        className='text-slate-100 bg-[#663178] hover:bg-[#4b175d] w-full py-2'
                         onClick={retornar} >
                         Não
                     </button>
-                    <button 
-                        className='w-full text-slate-100 bg-indigo-400 
-                                   hover:bg-indigo-600 flex items-center justify-center'
-                                    onClick={deletarTema}>
-                        { isLoading ? 
-                            <ClipLoader 
-                                color="#ffffff" 
+                    <button
+                        className='w-full text-slate-100 bg-[#2c1a3a] 
+                                   hover:bg-[#1e112a] flex items-center justify-center'
+                        onClick={deletarTema}>
+                        {isLoading ?
+                            <ClipLoader
+                                color="#ffffff"
                                 size={24}
-                            /> : 
+                            /> :
                             <span>Sim</span>
                         }
-                        
+
                     </button>
                 </div>
             </div>

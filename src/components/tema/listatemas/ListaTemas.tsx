@@ -53,13 +53,13 @@ function ListaTemas() {
             {isLoading && (
                 <div className="flex justify-center w-full my-8">
                     <SyncLoader
-                        color="#312e81"
+                        color="#eae5ef"
                         size={32}
                     />
                 </div>
             )}
 
-            <div className="flex justify-center w-full my-4">
+            <div className="flex justify-center w-full py-4">
                 <div className="container flex flex-col">
 
                     {(!isLoading && temas.length === 0) && (

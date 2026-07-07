@@ -13,6 +13,7 @@ export function ToastAlerta(mensagem: string, tipo: string) {
                 draggable: false,
                 theme: 'colored',
                 progress: undefined,
+                style: { backgroundColor: '#325b15', color: '#fff' }
             });
             break;
 
@@ -26,6 +27,7 @@ export function ToastAlerta(mensagem: string, tipo: string) {
                 draggable: false,
                 theme: 'colored',
                 progress: undefined,
+                style: { backgroundColor: '#64071e', color: '#fff' }
             });
             break;
 
@@ -40,6 +42,7 @@ export function ToastAlerta(mensagem: string, tipo: string) {
                 draggable: false,
                 theme: 'colored',
                 progress: undefined,
+                style: { backgroundColor: '#081e77', color: '#fff' }
             });
             break;
     }

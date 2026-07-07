@@ -60,7 +60,7 @@ function DeletarPostagem() {
         } catch (error: any) {
             if (error.toString().includes('401')) {
                 handleLogout()
-            }else {
+            } else {
                 ToastAlerta('Erro ao deletar a postagem.', 'erro')
             }
         }
@@ -81,31 +81,31 @@ function DeletarPostagem() {
                 Você tem certeza de que deseja apagar a postagem a seguir?
             </p>
 
-            <div className='border flex flex-col rounded-2xl overflow-hidden justify-between'>
-                <header 
-                    className='py-2 px-6 bg-indigo-600 text-white font-bold text-2xl'>
+            <div className='border border-slate-200 flex flex-col rounded-2xl overflow-hidden justify-between bg-[#eae5ef] shadow-md'>
+                <header
+                    className='py-2 px-6 bg-[#1e112a] text-white font-bold text-2xl'>
                     Postagem
                 </header>
-                <div className="p-4">
-                    <p className='text-xl h-full'>{postagem.titulo}</p>
+                <div className="p-4 text-slate-800">
+                    <p className='text-xl h-full font-bold'>{postagem.titulo}</p>
                     <p>{postagem.texto}</p>
                 </div>
                 <div className="flex">
-                    <button 
-                        className='text-slate-100 bg-red-400 hover:bg-red-600 w-full py-2'
+                    <button
+                        className='text-slate-100 bg-[#663178] hover:bg-[#4b175d] w-full py-2'
                         onClick={retornar}>
                         Não
                     </button>
-                    <button 
-                        className='w-full text-slate-100 bg-indigo-400 
-                        hover:bg-indigo-600 flex items-center justify-center'
+                    <button
+                        className='w-full text-slate-100 bg-[#2c1a3a] 
+                        hover:bg-[#1e112a] flex items-center justify-center'
                         onClick={deletarPostagem}>
-                        
-                        { isLoading ? 
-                            <ClipLoader 
-                                color="#ffffff" 
+
+                        {isLoading ?
+                            <ClipLoader
+                                color="#926799"
                                 size={24}
-                            /> : 
+                            /> :
                             <span>Sim</span>
                         }
                     </button>
